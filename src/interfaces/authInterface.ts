@@ -11,9 +11,13 @@ export interface RegisterResponse {
    expired: string;
 }
 
-export interface RegisterFormProps {
+export interface AuthFormProps {
    formSubmit: FormEventHandler<HTMLFormElement>;
    formRef: RefObject<HTMLFormElement>;
    error: string;
    setError: Dispatch<SetStateAction<string>>;
+}
+export interface LoginUser {
+   email: string;
+   password: string;
 }
