@@ -13,9 +13,9 @@ import Snackbar from '@mui/material/Snackbar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import Styles from '@/styles/auth.module.css';
-import { RegisterFormProps } from '@/interfaces';
+import { AuthFormProps } from '@/interfaces';
 
-const RegisterForm = (onRegister: RegisterFormProps) => {
+const RegisterForm = (onRegister: AuthFormProps) => {
    const { error, formRef, formSubmit, setError } = onRegister;
    const [open, setOpen] = useState(false);
 
