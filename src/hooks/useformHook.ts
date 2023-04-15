@@ -1,16 +1,16 @@
 import { useRef } from 'react';
-import { RegisterUser } from '@/interfaces';
+import { RegisterUser, LoginUser } from '@/interfaces';
 
 type FormFields = {
    [key: string]: string | RegisterUser;
 };
 
-type FormType = 'registerUser';
+type FormType = 'registerUser' | 'loginUser';
 
 export const useFormFields = (formType: FormType) => {
    const formRef = useRef<HTMLFormElement>(null);
 
-   const getFormValues = (): RegisterUser | null => {
+   const getFormValues = (): RegisterUser | LoginUser | null => {
       const form = formRef.current;
       if (!form) return null;
 
@@ -26,6 +26,13 @@ export const useFormFields = (formType: FormType) => {
             email: values['email'].toString()
          };
       }
+      if (formType === 'loginUser') {
+         return {
+            email: values['email'].toString(),
+            password: values['password'].toString()
+         };
+      }
+
       return null;
    };
 
