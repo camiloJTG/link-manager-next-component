@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import RegisterForm from '@/components/registerForm';
 import { useFormFields } from '@/hooks';
 import { registerUser } from '@/services';
+import { RegisterUser } from '@/interfaces';
 
 const RegisterContainer = () => {
    const { formRef, getFormValues } = useFormFields('registerUser');
@@ -13,7 +14,7 @@ const RegisterContainer = () => {
       e.preventDefault();
       const formValue = getFormValues();
       if (!formValue) return null;
-      const message = await registerUser(formValue);
+      const message = await registerUser(formValue as RegisterUser);
       if (message.length <= 0) {
          setError('');
          routerRedirect.replace('home');
